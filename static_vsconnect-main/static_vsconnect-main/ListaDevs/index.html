@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Devs - VSConnect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="../img/favicon2.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Righteous&family=Titillium+Web:wght@200;300;400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="../js/script.js" defer></script>
+</head>
+
+<body>
+    <div id="sombra"></div>
+    <header>
+        <div class="container header_conteudo">
+            <!-- <a class="menu_barras" href="#"><img onclick="mostrarMenu()" src="../Imagens/Menu de barras.svg" alt=""></a> -->
+            <!-- Acessibilidade ARIA
+            aria-label = para indicar o que o elemento faz.
+            aria-expanded = atributo que salva o status do botão (expandido ou nao - true ou false).
+            aria-control = especifica qual elemento esta sendo controlado atraves do Id.
+            aria-haspopup = indica que o elemento tem um popup (true ou false).
+            -->
+            <a class="menu_barras" id="menu_barras" aria-label="abrir menu" aria-expanded="false"
+                aria-controls="menu_links" aria-haspopup="true" onclick="mostrarMenu()" href="#">
+                <div class="barras"></div>
+            </a>
+            <img class="header_logo" src="../img/logo.svg" alt="">
+            <nav>
+                <div id="menu_links" class="menu_links">
+                    <a href="../Home/index.html">home</a>
+                    <a href="#">serviços</a>
+                    <a href="#">cadastro</a>
+                </div>
+                <a class="header_icone_login" href="../Login/index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                        <path
+                            d="M352 96l64 0c17.7 0 32 14.3 32 32l0 256c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0c53 0 96-43 96-96l0-256c0-53-43-96-96-96l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32zm-9.4 182.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L242.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z" />
+                    </svg>
+                </a>
+                <a class="header_botao_login" href="../Login/index.html">login</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container container_lista_devs">
+            <div class="lista_devs_conteudo">
+                <h1>Lista de Devs</h1>
+                <hr>
+                <form method="post">
+                    <div class="wrapper_form">
+                        <label for="busca">Procurar desenvolvedores</label>
+                        <div class="campo-label">
+                            <input type="search" name="campo-busca" id="busca" placeholder="Buscar desenvolvedores por tecnologias...">
+                            <button type="submit">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="wrapper_lista">
+                    <ul>
+                        <li>
+                            <div class="dev">
+                                <div class="grupo_contato">
+                                    <img src="https://github.com/Thiago-Nascimento.png" alt="">
+                                    <div class="contato_dev">
+                                        <h3>Thiago Nascimento</h3>
+                                        <p>thiago@email.com</p>
+                                    </div>
+                                </div>
+                                <div class="techs">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>React</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dev">
+                                <div class="grupo_contato">
+                                    <img src="https://github.com/JessicaSanto.png" alt="">
+                                    <div class="contato_dev">
+                                        <h3>Jessica Franzon</h3>
+                                        <p>jessica@email.com</p>
+                                    </div>
+                                </div>
+                                <div class="techs">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>React</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dev">
+                                <div class="grupo_contato">
+                                    <img src="https://github.com/odirlei-assis.png" alt="">
+                                    <div class="contato_dev">
+                                        <h3>Odirlei Sabella</h3>
+                                        <p>odirlei@email.com</p>
+                                    </div>
+                                </div>
+                                <div class="techs">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>React</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dev">
+                                <div class="grupo_contato">
+                                    <img src="https://github.com/alexiamelhado18.png" alt="">
+                                    <div class="contato_dev">
+                                        <h3>Aléxia Vitória</h3>
+                                        <p>alexia@email.com</p>
+                                    </div>
+                                </div>
+                                <div class="techs">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>React</span>
+                                </div>
+                            </div>
+                        </li>                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container rodape">
+            <div class="rodape_conteudo">
+                <div class="rodape_conteudo_paginas">
+                    <h2>Páginas</h2>
+                    <ul>
+                        <li>Login</li>
+                        <li>Home</li>
+                        <li>Listar Serviços</li>
+                        <li>Cadastrar Cliente</li>
+                        <li>Cadastrar Desenvolvedor</li>
+                    </ul>
+                </div>
+                <img src="../img/logo.svg" alt="">
+                <div class="rodape_conteudo_contatos">
+                    <h2>Contatos</h2>
+                    <div>
+                        <a href="#"><img src="../img/facebook.svg" alt=""></a>
+                        <a href="#"><img src="../img/instagram.svg" alt=""></a>
+                        <a href="#"><img src="../img/linkedin.svg" alt=""></a>
+                    </div>
+                    <a href="mailto:">contato@vsconnect.com</a>
+                </div>
+            </div>
+            <p>todos os direitos reservados ©.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
