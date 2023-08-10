@@ -163,4 +163,4 @@ function ListaServicos() {
 
 }
 
-export default ListaServicos
+export default ListaServicos;
