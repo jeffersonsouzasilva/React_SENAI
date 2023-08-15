@@ -1,8 +1,58 @@
+import { useState } from "react"
 import CardDev from "../../components/CardDev"
 import "./style.css"
 
 export default function ListaDev() {
     
+    const [devs, setDevs] = useState <any[]> ([
+        {
+            img_perfil: "https://github.com/Thiago-Nascimento.png",
+            nome: "Thiago Nascimento",
+            email: "thiago@email.com",
+            skills: ["HTML", "CSS", "REACT"]
+        },
+        {
+            img_perfil: "https://github.com/JessicaSanto.png",
+            nome: "Jessica Franzon",
+            email: "jessica@email.com",
+            skills: ["HTML", "CSS", "REACT"]
+        },
+        {
+            img_perfil: "https://github.com/odirlei-assis.png",
+            nome: "Odirlei Sabella",
+            email: "odirlei@email.com",
+            skills: ["HTML", "CSS", "ANGULAR"]
+        },
+        {
+            img_perfil: "https://github.com/alexiamelhado18.png",
+            nome: "Aléxia Vitória",
+            email: "alexia@email.com",
+            skills: ["PYTHON", "VUE", "REACT"]
+        } 
+    ]);
+
+    const [skilDigitada, setSkillDigitada] = useState<string>("");
+
+    const [listaDevsFiltrados, setListaDevsFiltrados] = useState<any[]>(devs);
+
+    function buscarPorSkill(event: any) {
+        event.preventDefault();
+
+        const devsFiltrados = devs.filter((dev: any) => dev.skills.include(skilDigitada.toLocaleUpperCase) )
+
+        if(devsFiltrados.length === 0){
+            alert("Nenhum desenvolvedor(a) encontrado com essa skill")
+        }else{
+            setListaDevsFiltrados(devsFiltrados)
+        }
+    }
+
+    function retornoDevsGeral(event: any){
+        if(event.target.value === ""){
+            setListaDevsFiltrados(devs)
+        }
+        setSkillDigitada(event.target.value)
+    }
 
     return (
         <>
@@ -11,7 +61,7 @@ export default function ListaDev() {
                     <div className="lista_devs_conteudo">
                         <h1>Lista de Devs</h1>
                         <hr />
-                        <form method="post">
+                        <form method="post" onSubmit={buscarPorSkill}>
                             <div className="wrapper_form">
                                 <label htmlFor="busca">Procurar desenvolvedores</label>
                                 <div className="campo-label">
@@ -19,7 +69,7 @@ export default function ListaDev() {
                                         type="search"
                                         name="campo-busca"
                                         id="busca"
-                                        placeholder="Buscar desenvolvedores por tecnologias..."
+                                        placeholder="Buscar desenvolvedores por tecnologias..." onChange={retornoDevsGeral}
                                     />
                                     <button type="submit">Buscar</button>
                                 </div>
@@ -27,7 +77,18 @@ export default function ListaDev() {
                         </form>
                         <div className="wrapper_lista">
                             <ul>
-                                <li>
+                                {listaDevsFiltrados.map((dev: any, index: number) => {
+                                    return <li>
+                                        <CardDev 
+                                        foto={dev.img_perfil}
+                                        nome={dev.nome}
+                                        email={dev.email}
+                                        techs={dev.skills}
+                                        />
+                                    </li>
+                                }
+                                )}
+                                {/* <li>
                                     <CardDev nome="Irineu" email="irineu@gmail.com"/>
                                 </li>
                                 <li>
@@ -35,7 +96,7 @@ export default function ListaDev() {
                                 </li>
                                 <li>
                                     <CardDev nome="Marilene" email="marilene@gmail.com"/>
-                                </li>
+                                </li> */}
                                 <li>
                                     <div className="dev">
                                         <div className="grupo_contato">
