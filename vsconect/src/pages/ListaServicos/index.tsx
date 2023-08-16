@@ -1,3 +1,5 @@
+import { useState } from "react"
+import CardServico from "../../components/CardServico"
 import "./style.css"
 
 import Logo from "../../assets/img/logo.svg"
@@ -32,6 +34,59 @@ function ListaServicos() {
     //     menu_barras.classList.toggle("ativo"); // Alterna a classe 'ativo' no botão do menu
 
     // }
+
+    const [servicos, setservicos] = useState <any[]> ([
+        // {
+        //     img_perfil: "https://github.com/Thiago-Nascimento.png",
+        //     nome: "Thiago Nascimento",
+        //     email: "thiago@email.com",
+        //     skills: ["HTML", "CSS", "REACT"]
+        // },
+        // {
+        //     img_perfil: "https://github.com/JessicaSanto.png",
+        //     nome: "Jessica Franzon",
+        //     email: "jessica@email.com",
+        //     skills: ["HTML", "CSS", "REACT"]
+        // },
+        // {
+        //     img_perfil: "https://github.com/odirlei-assis.png",
+        //     nome: "Odirlei Sabella",
+        //     email: "odirlei@email.com",
+        //     skills: ["HTML", "CSS", "ANGULAR"]
+        // },
+        // {
+        //     img_perfil: "https://github.com/alexiamelhado18.png",
+        //     nome: "Aléxia Vitória",
+        //     email: "alexia@email.com",
+        //     skills: ["PYTHON", "VUE", "REACT"]
+        // } 
+    ]);
+
+
+    const [servicoDigitada, setServicoDigitada] = useState<string>("");
+
+    const [listaServicosFiltrados, setListaServicosFiltrados] = useState<any[]>(servicos);
+
+    function buscarPorServico(event: any) {
+        event.preventDefault();
+
+        const servicosFiltrados = servicos.filter((servico: any) => servico.skills.includes(servicoDigitada.toLocaleUpperCase) )
+
+        if(servicosFiltrados.length === 0){
+            alert("Nenhum desenvolvedor(a) encontrado com essa skill")
+        }else{
+            setListaServicosFiltrados(servicosFiltrados)
+        }
+    }
+
+    function retornoServicosGeral(event: any){
+        if(event.target.value === ""){
+            setListaServicosFiltrados(servicos)
+        }
+        setServicoDigitada(event.target.value)
+    }
+
+
 
     return (
         
@@ -76,10 +131,10 @@ function ListaServicos() {
                             <h1>Lista de Serviços</h1>
                             <hr/>
                             <form method="post">
-                                <div className="wrapper_form">
+                                <div className="wrapper_form" onSubmit={buscarPorServico}>
                                     <label htmlFor="busca">Procurar serviços</label>
                                     <div className="campo-label">
-                                        <input type="search" name="campo-busca" id="busca" placeholder="Buscar serviços por tecnologias..."></input>
+                                        <input type="search" name="campo-busca" id="busca" placeholder="Buscar serviços por tecnologias..." onChange={retornoServicosGeral}></input>
                                         <button type="submit">Buscar</button>
                                     </div>
                                 </div>

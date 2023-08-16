@@ -2,7 +2,7 @@ import { useState } from "react"
 import CardDev from "../../components/CardDev"
 import "./style.css"
 
-export default function ListaDev() {
+export default function ListaDevs() {
     
     const [devs, setDevs] = useState <any[]> ([
         {
@@ -31,14 +31,14 @@ export default function ListaDev() {
         } 
     ]);
 
-    const [skilDigitada, setSkillDigitada] = useState<string>("");
+    const [skillDigitada, setSkillDigitada] = useState<string>("");
 
     const [listaDevsFiltrados, setListaDevsFiltrados] = useState<any[]>(devs);
 
     function buscarPorSkill(event: any) {
         event.preventDefault();
 
-        const devsFiltrados = devs.filter((dev: any) => dev.skills.include(skilDigitada.toLocaleUpperCase) )
+        const devsFiltrados = devs.filter((dev: any) => dev.skills.includes(skillDigitada.toLocaleUpperCase) )
 
         if(devsFiltrados.length === 0){
             alert("Nenhum desenvolvedor(a) encontrado com essa skill")
@@ -97,7 +97,7 @@ export default function ListaDev() {
                                 <li>
                                     <CardDev nome="Marilene" email="marilene@gmail.com"/>
                                 </li> */}
-                                <li>
+                                {/* <li>
                                     <div className="dev">
                                         <div className="grupo_contato">
                                             <img src="https://github.com/Thiago-Nascimento.png" alt="" />
@@ -160,7 +160,7 @@ export default function ListaDev() {
                                             <span>React</span>
                                         </div>
                                     </div>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
