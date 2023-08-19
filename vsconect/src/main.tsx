@@ -9,6 +9,7 @@ import Header from './components/Header'
 import ListaServicos from './pages/ListaServicos'
 import Footer from './components/Footer'
 import ListaDevs from './pages/ListaDevs'
+import PerfilUsuario from './pages/PerfilUsuario'
 
 
 
@@ -34,6 +35,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='/' element={<Home/>} />
         <Route path='ListaServicos' element={<ListaServicos/>}/>
         <Route path='ListaDevs' element={<ListaDevs/>}/>
+        <Route path='perfil/:idUsuario' element={ < PerfilUsuario/> } />
       </Routes>
       <Footer/>
     </BrowserRouter>

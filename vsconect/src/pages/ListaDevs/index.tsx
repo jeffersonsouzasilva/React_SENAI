@@ -80,6 +80,7 @@ export default function ListaDevs() {
                                 {listaDevsFiltrados.map((dev: any, index: number) => {
                                     return <li>
                                         <CardDev 
+                                        id={dev.id}
                                         foto={dev.img_perfil}
                                         nome={dev.nome}
                                         email={dev.email}
