@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import CardDev from "../../components/CardDev"
 import "./style.css"
+import api from "../../utils/api";
 
 export default function ListaDevs() {
     
-    const [devs, setDevs] = useState <any[]> ([
+    const [devs, setDevs] = useState <any[]>([]); /*([
         {
             img_perfil: "https://github.com/Thiago-Nascimento.png",
             nome: "Thiago Nascimento",
@@ -29,16 +30,21 @@ export default function ListaDevs() {
             email: "alexia@email.com",
             skills: ["PYTHON", "VUE", "REACT"]
         } 
-    ]);
+    ]);*/
 
     const [skillDigitada, setSkillDigitada] = useState<string>("");
 
     const [listaDevsFiltrados, setListaDevsFiltrados] = useState<any[]>(devs);
 
+    useEffect( ()=>{
+        document.title = "VSConnect - Lista devs"
+        listarDesenvolvedores()
+    }, [])
+
     function buscarPorSkill(event: any) {
         event.preventDefault();
 
-        const devsFiltrados = devs.filter((dev: any) => dev.skills.includes(skillDigitada.toLocaleUpperCase) )
+        const devsFiltrados = devs.filter((dev: any) => dev.hardskills.includes(skillDigitada.toLocaleUpperCase()) );
 
         if(devsFiltrados.length === 0){
             alert("Nenhum desenvolvedor(a) encontrado com essa skill")
@@ -54,9 +60,16 @@ export default function ListaDevs() {
         setSkillDigitada(event.target.value)
     }
 
+    function listarDesenvolvedores(){
+        api.get("users").then((response: any) =>{
+            console.log(response.data)
+            setDevs(response.data)
+        })
+    }
+
     return (
         <>
-            <main>
+            <main id="lista-devs">
                 <div className="container container_lista_devs">
                     <div className="lista_devs_conteudo">
                         <h1>Lista de Devs</h1>
@@ -77,14 +90,14 @@ export default function ListaDevs() {
                         </form>
                         <div className="wrapper_lista">
                             <ul>
-                                {listaDevsFiltrados.map((dev: any, index: number) => {
+                                {devs.map((dev: any, index: number) => {
                                     return <li>
                                         <CardDev 
                                         id={dev.id}
                                         foto={dev.img_perfil}
                                         nome={dev.nome}
                                         email={dev.email}
-                                        techs={dev.skills}
+                                        techs={dev.hardskills}
                                         />
                                     </li>
                                 }

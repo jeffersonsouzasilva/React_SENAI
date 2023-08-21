@@ -1,13 +1,13 @@
 import "./style.css"
 
-import Logo from "../../assets/img/logo.svg"
+//import Logo from "../../assets/img/logo.svg"
 import Clientes from "../../assets/img/clientes.png"
 import MaosDev from "../../assets/img/maos_dev.png"
 import Alfinete from "../../assets/img/alfinete.png"
-import Dev from "../../assets/img/dev.png"
-import Facebook from "../../assets/img/facebook.svg"
-import Instagram from "../../assets/img/instagram.svg"
-import Linkedin from "../../assets/img/linkedin.svg"
+//import Dev from "../../assets/img/dev.png"
+//import Facebook from "../../assets/img/facebook.svg"
+//import Instagram from "../../assets/img/instagram.svg"
+//import Linkedin from "../../assets/img/linkedin.svg"
 
 function Home() {
     // Paranaue de typescript e depois o return de html em baixo
@@ -222,7 +222,7 @@ function Home() {
                         </nav>
                     </div>
                 </header> */}
-                <main id="main">
+                <main id="home">
                     <h1>página inicial VSconnect</h1>
                     <section className="banner">
                         <div className="banner_conteudo">

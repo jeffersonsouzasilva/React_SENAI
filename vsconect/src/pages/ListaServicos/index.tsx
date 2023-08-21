@@ -1,5 +1,6 @@
-import { useState } from "react"
-import CardServico from "../../components/CardServico"
+import { useEffect,useState } from "react"
+import {CardServico} from "../../components/CardServico"
+import api from "../../utils/api";
 import "./style.css"
 
 import Logo from "../../assets/img/logo.svg"
@@ -35,7 +36,7 @@ function ListaServicos() {
 
     // }
 
-    const [servicos, setservicos] = useState <any[]> ([
+    const [servicos, setServicos] = useState <any[]> ([
         // {
         //     img_perfil: "https://github.com/Thiago-Nascimento.png",
         //     nome: "Thiago Nascimento",
@@ -67,10 +68,15 @@ function ListaServicos() {
 
     const [listaServicosFiltrados, setListaServicosFiltrados] = useState<any[]>(servicos);
 
+    useEffect(() => {
+        document.title = "VSConnect - Lista Servico"
+        listaDeServicos()
+    }, [])
+    
     function buscarPorServico(event: any) {
         event.preventDefault();
 
-        const servicosFiltrados = servicos.filter((servico: any) => servico.skills.includes(servicoDigitada.toLocaleUpperCase) )
+        const servicosFiltrados = servicos.filter((servico: any) => servico.techs.includes(servicoDigitada.toLocaleUpperCase()) );
 
         if(servicosFiltrados.length === 0){
             alert("Nenhum desenvolvedor(a) encontrado com essa skill")
@@ -86,6 +92,13 @@ function ListaServicos() {
         setServicoDigitada(event.target.value)
     }
 
+    function listaDeServicos(){
+        api.get("servicos").then((response: any) =>{
+            console.log(response.data)
+            setServicos(response.data)
+            console.log(response.data)
+        })
+    }
 
 
     return (
@@ -140,8 +153,18 @@ function ListaServicos() {
                                 </div>
                             </form>
                             <div className="wrapper_lista">
-                                <ul>                   
-                                    <li>
+                                <ul>
+                                    {servicos.map((servico: any, index: number)=>{
+                                        return <li key={index}>
+                                            <CardServicos
+                                            titulo={servico.nome}
+                                            valor={servico.valor}
+                                            descricao={servico.descricao}
+                                            techs={servico.techs}
+                                            />
+                                        </li>
+                                    })}                   
+                                    {/*<li>
                                         <div className="servico">
                                             <div className="topo_servico">
                                                 <h3>Desenvolvimento de site institucional - Gateway de Pagamento / Fintech</h3>
@@ -178,7 +201,7 @@ function ListaServicos() {
                                                 <span>Python</span>
                                             </div>
                                         </div>
-                                    </li>                 
+                                    </li>  */}               
                                 </ul>
                             </div>
                         </div>
