@@ -71,6 +71,34 @@
       ],
       "user_img": "1692211091725.jpeg",
       "id": 4
+    },
+    {
+      "email": "je.and1@yahoo.com.br",
+      "password": "$2a$10$3r9/ca/IqtOuwXVI3h.0SuNrqnwfO..ggZSCWxduTPQ5VUmIpNzWa",
+      "nome": "Jefferson Souza Silva",
+      "cep": "09784400",
+      "logradouro": "Rua geronimo",
+      "numero": "50",
+      "bairro": "vila",
+      "Cidade": "São Bernardo do Campo",
+      "uf": "sp",
+      "hardSkills": "[\"HTML\",\"CSS\"]",
+      "user_img": "1692751378882.jpeg",
+      "id": 5
+    },
+    {
+      "email": "eee@gmail.com",
+      "password": "$2a$10$B25NpHMNGF9PQTyy082jM.uHbuHcdBkt.ad697J70i1yp8czKV0VK",
+      "nome": "Gustavo",
+      "cep": "11111-111",
+      "logradouro": "rua maria",
+      "numero": "3",
+      "bairro": "vila",
+      "Cidade": "Sao ber",
+      "uf": "uf",
+      "hardSkills": "[\"CSS\"]",
+      "user_img": "1692751930286.jpeg",
+      "id": 6
     }
   ],
   "servicos": [

@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import CardDev from "../../components/CardDev"
 import "./style.css"
 import api from "../../utils/api";
 
+
 export default function ListaDevs() {
-    
-    const [devs, setDevs] = useState <any[]>([]); /*([
+    const [devs, setDevs] = useState<any[]>([]);
+    /*([
         {
             img_perfil: "https://github.com/Thiago-Nascimento.png",
             nome: "Thiago Nascimento",
@@ -32,73 +33,69 @@ export default function ListaDevs() {
         } 
     ]);*/
 
-    const [skillDigitada, setSkillDigitada] = useState<string>("");
+    const [skillDigitada, setskillDigitada] = useState<string>("");
 
-    const [listaDevsFiltrados, setListaDevsFiltrados] = useState<any[]>(devs);
+    const [listaDevsFiltrados, setListaDevsFiltarados] = useState<any[]> (devs);
 
-    useEffect( ()=>{
+    useEffect( () => {
         document.title = "VSConnect - Lista devs"
         listarDesenvolvedores()
     }, [])
 
-    function buscarPorSkill(event: any) {
+    function buscarPorSkill(event: any){
         event.preventDefault();
 
-        const devsFiltrados = devs.filter((dev: any) => dev.hardskills.includes(skillDigitada.toLocaleUpperCase()) );
+        const devsFiltrados = devs.filter((dev: any) => dev.hardSkills.includes(skillDigitada.toLocaleUpperCase()));
 
         if(devsFiltrados.length === 0){
-            alert("Nenhum desenvolvedor(a) encontrado com essa skill")
-        }else{
-            setListaDevsFiltrados(devsFiltrados)
+            alert("Nenhum desenvolvedor (a) com essa skill")
+        }else {
+            setListaDevsFiltarados(devsFiltrados)   
         }
+
     }
 
     function retornoDevsGeral(event: any){
         if(event.target.value === ""){
-            setListaDevsFiltrados(devs)
+            setListaDevsFiltarados(devs)
         }
-        setSkillDigitada(event.target.value)
+        setskillDigitada(event.target.value)
     }
 
+
     function listarDesenvolvedores(){
-        api.get("users").then((response: any) =>{
+        api.get("users").then((response: any) => {
             console.log(response.data)
             setDevs(response.data)
         })
     }
 
     return (
-        <>
-            <main id="lista-devs">
-                <div className="container container_lista_devs">
-                    <div className="lista_devs_conteudo">
-                        <h1>Lista de Devs</h1>
-                        <hr />
+        <main id="lista-devs">
+            <div className="container container_lista_devs">
+                <div className="lista_devs_conteudo">
+                    <h1>Lista de Devs</h1>
+                    <hr/>
                         <form method="post" onSubmit={buscarPorSkill}>
                             <div className="wrapper_form">
                                 <label htmlFor="busca">Procurar desenvolvedores</label>
                                 <div className="campo-label">
-                                    <input
-                                        type="search"
-                                        name="campo-busca"
-                                        id="busca"
-                                        placeholder="Buscar desenvolvedores por tecnologias..." onChange={retornoDevsGeral}
-                                    />
-                                    <button type="submit">Buscar</button>
+                                    <input type="search" name="campo-busca" id="busca" placeholder="Buscar desenvolvedores por tecnologias..." onChange={retornoDevsGeral}/>
+                                        <button type="submit">Buscar</button>
                                 </div>
                             </div>
                         </form>
                         <div className="wrapper_lista">
                             <ul>
                                 {devs.map((dev: any, index: number) => {
-                                    return <li>
-                                        <CardDev 
-                                        id={dev.id}
-                                        foto={dev.img_perfil}
-                                        nome={dev.nome}
-                                        email={dev.email}
-                                        techs={dev.hardskills}
-                                        />
+                                    return <li key={index}>
+                                         <CardDev 
+                                         id={dev.id}
+                                         foto={dev.user_img}
+                                         nome={dev.nome}
+                                         email={dev.email}
+                                         techs={dev.hardSkills}
+                                         />
                                     </li>
                                 }
                                 )}
@@ -177,11 +174,8 @@ export default function ListaDevs() {
                                 </li> */}
                             </ul>
                         </div>
-                    </div>
                 </div>
-            </main>
-
-
-        </>
+            </div>
+        </main>
     )
 }
