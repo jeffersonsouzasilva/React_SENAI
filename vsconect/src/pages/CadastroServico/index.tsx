@@ -25,7 +25,7 @@ function CadastroServico() {
 
     const [nome, setNome] = useState<string>("")
     const [descricao, setDescricao] = useState<string>("")
-    const [valor, setValor] = useState<string>("")
+    const [proposta, setProposta] = useState<string>("")
 
     const [skillsSelecionadas, setSkillsSelecionadas] = useState<string[]>([]); // Array (lista) para armazenar as skills selecionadas
 
@@ -38,11 +38,11 @@ function CadastroServico() {
 
         formdata.append("nome", nome)
         formdata.append("descricao", descricao)
-        formdata.append("valor", valor)
+        formdata.append("proposta", proposta)
 
         formdata.append("techs", JSON.stringify(skillsSelecionadas))
 
-        api.post("servico", formdata).then((response) =>{
+        api.post("servicos", formdata).then((response) =>{
             console.log(response)
             alert("Usuario criado com sucesso! :) ")
             //Navegacao para login
@@ -55,7 +55,7 @@ function CadastroServico() {
 
 
     function adicionarSkill() {
-        //verifica o valor do state select
+        //verifica o proposta do state select
         if (select === "") {
             //se for igual a string vazia, exibe uma mensagem
             alert("Selecione uma skill para adicionar");
@@ -66,13 +66,13 @@ function CadastroServico() {
                 alert("Essa skill já foi selecionada");
             }
             else {
-                //se não existir, a variavel novaListaSkillsSelecionadas cria uma cópia do valor do state skillsSelecionadas
+                //se não existir, a variavel novaListaSkillsSelecionadas cria uma cópia do proposta do state skillsSelecionadas
                 let novaListaSkillsSelecionadas = [...skillsSelecionadas];
 
                 //E adiciona a skill, que foi selecionada pelo usuário
                 novaListaSkillsSelecionadas.push(select);
 
-                //Atualiza o valor do state skillsSelecionadas
+                //Atualiza o proposta do state skillsSelecionadas
                 setSkillsSelecionadas(novaListaSkillsSelecionadas);
             }
         }
@@ -83,7 +83,7 @@ function CadastroServico() {
         //A variavel novaListaSkillsSelecionadas armazena skills diferente da skill que o usuário clicou para ser excluida.
         const novaListaSkillsSelecionadas = skillsSelecionadas.filter(item => item !== skill);
 
-        //Atualiza o valor do state skillsSelecionadas, com o valor da variavel novaListaSkillsSelecionadas 
+        //Atualiza o proposta do state skillsSelecionadas, com o proposta da variavel novaListaSkillsSelecionadas 
         setSkillsSelecionadas(novaListaSkillsSelecionadas);
     };
 
@@ -117,10 +117,10 @@ function CadastroServico() {
                             <input
                                 type="text"
                                 id="proposta"
-                                onChange={ (event) => {setValor(event.target.value)}}
+                                onChange={ (event) => {setProposta(event.target.value)}}
                                 // onKeyUp={ }
                                 maxLength={17}
-                                placeholder="Digite o valor que deseja pagar:"
+                                placeholder="Digite o proposta que deseja pagar:"
                             />
                         </div>
 
@@ -132,9 +132,9 @@ function CadastroServico() {
                                 <select
                                     name=""
                                     id="cad_select_skill"
-                                    onChange={(e) => setSelect(e.target.value)}
+                                    onChange={(event) => setSelect(event.target.value)}
                                 >
-                                    <option selected disabled value="">Selecione</option>
+                                    <option value="DEFAULT" disabled>Selecione</option>
                                     {
                                         techs.map((tech: any, index: number) => {
                                             return <option key={index} value={tech}>{tech}</option>

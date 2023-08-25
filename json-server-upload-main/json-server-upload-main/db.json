@@ -99,6 +99,20 @@
       "hardSkills": "[\"CSS\"]",
       "user_img": "1692751930286.jpeg",
       "id": 6
+    },
+    {
+      "email": "qqq@mail.com",
+      "password": "$2a$10$DVoRlxy9R6mQxW/D23OkzuZgyETsixIjyn6QmtqiswAsnTtXNPbby",
+      "nome": "Maria",
+      "user_img": "1692920698456.jpeg",
+      "cep": "",
+      "logradouro": "",
+      "numero": "",
+      "bairro": "",
+      "Cidade": "",
+      "uf": "",
+      "hardSkills": "[\"HTML\"]",
+      "id": 7
     }
   ],
   "servicos": [
@@ -130,6 +144,13 @@
         "PYTHON"
       ],
       "id": 3
+    },
+    {
+      "nome": "Criacao de pagina",
+      "descricao": "uwdksjkdkjhsdjdfmbdmfbdnmsfbmnsdbfnmdsbfnmdsbfns",
+      "proposta": "R$1330",
+      "techs": "[\"JAVASCRIPT\"]",
+      "id": 4
     }
   ]
 }
