@@ -39,6 +39,13 @@ function PerfilUsuario() {
             setUf(response.data.uf)
             setCidade(response.data.cidade)
             setListaskills(response.data.hardSkills)
+
+            if(typeof response.data.hardSkills === "string"){
+                setListaskills(JSON.parse(response.data.hardSkills))
+            }else{
+                setListaskills(response.data.hardSkills)
+            }
+
         }).catch((error) =>{
             console.log(error)
         })

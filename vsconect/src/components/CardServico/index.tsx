@@ -4,13 +4,13 @@ import { Link } from "react-router-dom"
 
 export function CardServicos(props: any) {
 
-    // function parseListaTechs() {
-    //     if (typeof props.techs === "string") {
-    //         return JSON.parse(props.techs)
-    //     } else {
-    //         return props.techs
-    //     }
-    // }
+    function parseListaServicos() {
+        if (typeof props.techs === "string") {
+            return JSON.parse(props.techs)
+        } else {
+            return props.techs
+        }
+    }
 
 
     return (
@@ -18,7 +18,7 @@ export function CardServicos(props: any) {
 
         <div className="servico">
             <div className="topo_servico">
-                <Link to={"/perfil/" + props.id} >{props.titulo}</Link>
+                <Link to={"/servicos/" + props.id} >{props.titulo}</Link>
                 {/* <h3>{props.titulo}</h3> */}
                 <span>{props.valor}</span>
 
@@ -32,12 +32,12 @@ export function CardServicos(props: any) {
 
             <div className="techs">
                 {
-                    props.techs.map((tech: string, index: number) => {
-                        return <span key={index}>{tech}</span>
-                    })
-                    // parseListaTechs().map((tech: string, index: number) => {
+                    // props.techs.map((tech: string, index: number) => {
                     //     return <span key={index}>{tech}</span>
                     // })
+                    parseListaServicos().map((tech: string, index: number) => {
+                        return <span key={index}>{tech}</span>
+                    })
 
                 }
             </div>

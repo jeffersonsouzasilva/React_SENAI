@@ -22,7 +22,7 @@ function VisualizarServico() {
     const [techs, setTechs] = useState<string[]>([])
 
     useEffect(() => {
-        document.title = "Pagina de Servicos VSConnect"
+        document.title = "Servico:" + nome + "- VSConnect"
 
         buscarServicoPorId()
 
@@ -51,7 +51,7 @@ function VisualizarServico() {
     return (
         <main id="main_visualizarservico">
             <div className="container">
-                <h1>Serviço</h1>
+                <h1>Serviço - {nome}</h1>
                 <div className="servico">
                     <div className="topo_servico">
                         <h2>{nome}</h2>
@@ -60,8 +60,8 @@ function VisualizarServico() {
                     <p>{descricao}</p>
                     <div className="techs">
                         {
-                            techs.map((skill: any, index: number) => {
-                                return <span key={index}>{ skill }</span>
+                            techs.map((tech: any, index: number) => {
+                                return <span key={index}>{ tech }</span>
                             })
 
 
