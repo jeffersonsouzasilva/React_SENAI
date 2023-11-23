@@ -12,6 +12,8 @@ import ListaDevs from './pages/ListaDevs'
 import PerfilUsuario from './pages/PerfilUsuario'
 import VisualizarServico from './pages/VisualizarServico'
 import CadastroUsuario from './pages/CadastroUsuario'
+import CadastroServico from './pages/CadastroServico'
+import Login from './pages/Login'
 
 
 
@@ -39,7 +41,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path='ListaDevs' element={<ListaDevs/>}/> {/* AdmConsulta do Mamuka */}
         <Route path='perfil/:idUsuario' element={ < PerfilUsuario/> } />  
         <Route path = 'servicos/:idServicos' element = {<VisualizarServico/>}/>
+<<<<<<< HEAD
         <Route path='cadastrousuario' element={ < CadastroUsuario/> } /> 
+=======
+        <Route path='cadastrousuario' element={ < CadastroUsuario/> } />
+        <Route path='cadastroservico' element={ < CadastroServico/> } />
+        <Route path='Login' element={ < Login/> } />
+>>>>>>> c86b972c5a683f71b9a3e5a3fdaf179cb5ac2bd0
       </Routes>
       <Footer/>
     </BrowserRouter>
