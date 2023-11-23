@@ -36,10 +36,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='ListaServicos' element={<ListaServicos/>}/>
-        <Route path='ListaDevs' element={<ListaDevs/>}/>
-        <Route path='perfil/:idUsuario' element={ < PerfilUsuario/> } />
+        <Route path='ListaDevs' element={<ListaDevs/>}/> {/* AdmConsulta do Mamuka */}
+        <Route path='perfil/:idUsuario' element={ < PerfilUsuario/> } />  
         <Route path = 'servicos/:idServicos' element = {<VisualizarServico/>}/>
-        <Route path='cadastrousuario' element={ < CadastroUsuario/> } />
+        <Route path='cadastrousuario' element={ < CadastroUsuario/> } /> 
       </Routes>
       <Footer/>
     </BrowserRouter>
